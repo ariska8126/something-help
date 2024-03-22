@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace FileCopyApps.Entities;
+namespace FileCopyApps.Entities {
 
 public partial class GoAmlContext : DbContext
 {
@@ -16,6 +16,10 @@ public partial class GoAmlContext : DbContext
     }
 
     public virtual DbSet<Lookup> Lookups { get; set; }
+
+    public virtual DbSet<TableIconv> TableIconvs { get; set; }
+
+    public virtual DbSet<TableRc> TableRcs { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -41,8 +45,54 @@ public partial class GoAmlContext : DbContext
             entity.Property(e => e.UpdatedTime).HasColumnType("datetime");
         });
 
+        modelBuilder.Entity<TableIconv>(entity =>
+        {
+            entity.ToTable("Table_IConv");
+
+            entity.Property(e => e.Id)
+                .HasMaxLength(72)
+                .IsUnicode(false)
+                .HasColumnName("id");
+            entity.Property(e => e.CardNumber)
+                .HasMaxLength(72)
+                .IsUnicode(false)
+                .HasColumnName("card_number");
+            entity.Property(e => e.DiscAmount).HasColumnName("disc_amount");
+            entity.Property(e => e.MdrType)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("mdr_type");
+            entity.Property(e => e.Principal)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("principal");
+        });
+
+        modelBuilder.Entity<TableRc>(entity =>
+        {
+            entity.ToTable("Table_RCS");
+
+            entity.Property(e => e.Id)
+                .HasMaxLength(72)
+                .IsUnicode(false)
+                .HasColumnName("id");
+            entity.Property(e => e.CardNumber)
+                .HasMaxLength(72)
+                .IsUnicode(false)
+                .HasColumnName("card_number");
+            entity.Property(e => e.DiscAmount).HasColumnName("disc_amount");
+            entity.Property(e => e.MdrType)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("mdr_type");
+            entity.Property(e => e.Principal)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("principal");
+        });
+
         OnModelCreatingPartial(modelBuilder);
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-}
+} }

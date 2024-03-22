@@ -9,6 +9,9 @@ namespace FileCopyApps.Services
 {
     internal class BaseService
     {
-        protected static readonly ConverterContext db = new();
+        protected static readonly RnDContext db = new();
+        //protected static readonly ConverterContext db = new();
+        //protected static readonly GoAmlContext db = new();
+
     }
 }

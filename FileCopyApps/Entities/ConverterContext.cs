@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace FileCopyApps.Entities;
+namespace FileCopyApps.Entities {
 
 public partial class ConverterContext : DbContext
 {
@@ -21,7 +21,7 @@ public partial class ConverterContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=ADVERS-65804-1; Initial Catalog=converter; User Id=sa;password=s3cur3;TrustServerCertificate=true;");
+        => optionsBuilder.UseSqlServer("Data Source=192.168.243.54; initial catalog=RnD;persist security info=True;user id=sa;password=BNI46sql;MultipleActiveResultSets=True;TrustServerCertificate=true;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -69,4 +69,5 @@ public partial class ConverterContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+}
 }

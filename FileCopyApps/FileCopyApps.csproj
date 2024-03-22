@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="DiscAmountSettlement\DataRCSProcessing\Repositories\" />
     <Folder Include="Entities\" />
     <Folder Include="Repositories\" />
   </ItemGroup>

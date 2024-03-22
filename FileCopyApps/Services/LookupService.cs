@@ -9,8 +9,8 @@ namespace FileCopyApps.Services
 {
     internal class LookupService : BaseService
     {
-        public Lookup? findByType(string type) { 
-            return db.Lookups.FirstOrDefault(x => x.Type == type);
-        }
+        //public Lookup? findByType(string type) { 
+        //    return db.Lookups.FirstOrDefault(x => x.Type == type);
+        //}
     }
 }
