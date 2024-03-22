@@ -1,4 +1,5 @@
 ﻿using FileCopyApps.Entities;
+using FileCopyApps.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace FileCopyApps.Services
 {
-    internal class BaseService
+    public class BaseService
     {
         protected static readonly RnDContext db = new();
         //protected static readonly ConverterContext db = new();
         //protected static readonly GoAmlContext db = new();
-
+        public static FileUtils fileUtils = new();
     }
 }

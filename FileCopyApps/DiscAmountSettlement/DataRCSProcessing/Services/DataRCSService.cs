@@ -18,21 +18,9 @@ namespace FileCopyApps.DiscAmountSettlement.DataRCSProcessing.Services
         public static void save()
         {
             List<DataRCS> data = new();
-            List<string> fileList = new List<string>
-            {
-                //"BND350.D2024079.T0143136-18032024.xlsx",
-                //"BND350H.D2024076.T2342414-16032024.xlsx",
-                //"BND350H.D2024077.T2339495-17032024.xlsx",
-                //"BND350UI.D2024077.T0416435-16032024.xlsx",
-                //"BND350UI.D2024078.T0047128-17032024.xlsx",
-                "BND350UI.D2024079.T0151077-18032024.xlsx"
-                //"BNUSUIBGvsBND350UI-20240316.xlsx" //row tidak seragam sepertinya untuk jalin
-                //"BNUSUIBGvsBND350UI-20240317.xlsx",
-                //"BNUSUIBGvsBND350UI-20240318.xlsx",
-                //"BNUSUIJvsBND350UI-20240316.xlsx",
-                //"BNUSUIJvsBND350UI-20240317.xlsx",
-                //"BNUSUIJvsBND350UI-20240318.xlsx"
-            };
+
+            const string fileNameList = "file.txt";
+            List<string> fileList = fileUtils.ReadEachRow(fileNameList);
 
             string baseFilePath = "C:\\converter\\";
             string destTable = "[Table_RCS_complete_data]";
@@ -52,9 +40,8 @@ namespace FileCopyApps.DiscAmountSettlement.DataRCSProcessing.Services
                     data.Add(dataPart);
                     row++;
                 }
+                BulkCopy.SqlBulkCopyData(data, destTable);
             }
-
-            BulkCopy.SqlBulkCopyData(data, destTable);
         }
     }
 }
