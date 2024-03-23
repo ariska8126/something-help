@@ -29,6 +29,7 @@ namespace FileCopyApps.DiscAmountSettlement.DataRCSProcessing.Services
 
             foreach (string file in fileList)
             {
+                data = new();
                 string excelFilePath = baseFilePath + file;
                 
                 ISheet worksheet = ExcelUtils.init(excelFilePath, 1);
