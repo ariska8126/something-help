@@ -81,6 +81,17 @@ namespace FileCopyApps.Utilities
             {
                 return (long)cell.NumericCellValue;
             }
+            else if (propertyType == typeof(DateTime))
+            {
+				if (cell.CellType == CellType.Numeric)
+				{
+					return cell.DateCellValue;
+				}
+				else if (cell.CellType == CellType.String && DateTime.TryParse(cell.StringCellValue, out DateTime dateTimeValue))
+				{
+					return dateTimeValue;
+				}
+			}
             // Tambahkan tipe data lainnya sesuai kebutuhan
 
             // Jika tidak sesuai dengan tipe data yang diketahui, kembalikan null

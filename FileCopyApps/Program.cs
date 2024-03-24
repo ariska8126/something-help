@@ -8,6 +8,7 @@ using FileCopyApps.Entities;
 using NPOI.SS.Formula.Functions;
 using FileCopyApps.DiscAmountSettlement.Services;
 using FileCopyApps.DiscAmountSettlement.DataRCSProcessing.Services;
+using FileCopyApps.DiscAmountSettlement.DataIconvProcessing.Services;
 
 namespace FileCopyApps
 {
@@ -17,7 +18,7 @@ namespace FileCopyApps
         {
             Console.WriteLine("Start.");
             #region Data RCS Full Process
-            DataRCSService.save();
+            //DataRCSService.save();
             #endregion
 
             #region write excel
@@ -32,7 +33,11 @@ namespace FileCopyApps
             //filecopy();
             #endregion
 
-            Console.WriteLine("End.");
+            #region Split & Insert Data Iconverter
+                IConverterProcess.RunProcess();
+			#endregion
+
+			Console.WriteLine("End.");
         }
 
         static void WriteExcelTest()
